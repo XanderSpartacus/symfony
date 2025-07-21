@@ -4,6 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-contact_page:
+app_contact:
     path: /contact
     controller: App\Controller\ContactController::contact
