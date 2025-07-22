@@ -4,11 +4,20 @@
 
 {% block body %}
 
-    <h1>Liste des Etablissements</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Liste des Etablissements</h1>
+        <a class="btn btn-primary" href="{{ path('app_etablissement_new') }}">Ajouter un établissement</a>
+    </div>
+
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
 
     {% if etablissements is not empty %}
 
-    {#  exemple d'include une liste par exemple
+    {#  exemple d'include d'une liste
     {% include 'etablissement/_list.html.twig' %}
     #}
 
