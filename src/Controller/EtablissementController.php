@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Etablissement;
+use App\Form\EtablissementType;
 use App\Repository\EtablissementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -39,6 +40,27 @@ class EtablissementController extends AbstractController
 
         return $this->render('etablissement/index.html.twig', [
             'etablissements' => $etablissements,
+        ]);
+    }
+
+    #[Route('/etablissement/new', name: 'app_etablissement_new')]
+    public function new(Request $request, EntityManagerInterface $manager): Response
+    {
+        $etablissement = new Etablissement();
+        $form = $this->createForm(EtablissementType::class, $etablissement);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($etablissement);
+            $manager->flush();
+
+            $this->addFlash('success', 'L\'Établissement a bien été ajouté');
+
+            return $this->redirectToRoute('app_etablissement_index');
+        }
+
+        return $this->render('etablissement/new.html.twig', [
+            'form' => $form
         ]);
     }
 
