@@ -34,6 +34,12 @@ Une fois le serveur Symfony lancé :
 ```bash
 # Lancer le serveur local Symfony
 symfony server:start -d
+
+# Lancer les migrations
+bin/console doctrine:migrations:migrate
+
+# Charger les fixtures
+bin/console doctrine:fixtures:load
 ```
 ➡️ L'application est accessible à l'adresse : http://localhost:8000
 
