@@ -29,8 +29,12 @@
             </tr>
         {% endfor %}
         </tbody>
-
     </table>
+
+    <div class="navigation">
+        {# https://github.com/KnpLabs/KnpPaginatorBundle #}
+        {{ knp_pagination_render(etablissements) }}
+    </div>
 
     {% else %}
         <div class="alert alert-info">
