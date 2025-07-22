@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Etablissements{% endblock %}
+
+{% block body %}
+
+    <h1>Liste des Etablissements</h1>
+
+    {% if etablissements is not empty %}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Ville</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for etab in etablissements %}
+            <tr>
+                <td>{{ etab.nom|upper }}</td>
+                <td>{{ etab.ville }}</td>
+                <td>{{ etab.description }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    {% else %}
+        <div class="alert alert-info">
+            Il n'y a aucun établissement pour le moment
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+{# utile pour le debug {{ dump(etablissements) }} #}
+
+{# Structures de contrôle
+
+    {% if condition %}
+        Contenu conditionnel
+    {% endif %}
+
+    {% for item in items %}
+        {{ item.name }}
+    {% endfor %}
+
+#}
+
+{# Variables et filtres
+
+{{ variable }}
+{{ variable|filter }}
+{{ variable|filter(argument) }}
+
+#}
