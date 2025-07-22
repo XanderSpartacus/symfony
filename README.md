@@ -63,6 +63,15 @@ db_data (base de données)
 
 ### Rappels Docker utiles
 
+```bash
+docker compose up -d          # Démarrer les conteneurs
+docker ps                     # Voir les conteneurs actifs
+docker compose down           # Stop + suppression conteneurs
+docker compose down -v        # Stop + suppression totale (incl. volume)
+docker compose logs -f [svc]  # Logs en live
+docker exec -it [container] bash # Accès shell conteneur
+```
+
 ### Bundles installés
 ```bash
 # Fixtures pour données de test
