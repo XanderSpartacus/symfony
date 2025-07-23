@@ -21,6 +21,12 @@ class Etablissement
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $site_internet = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $telephone = null;
+
     // ... getter and setter methods
 
     public function getId(): ?int
@@ -63,4 +69,30 @@ class Etablissement
 
         return $this;
     }
+
+    public function getSiteInternet(): ?string
+    {
+        return $this->site_internet;
+    }
+
+    public function setSiteInternet(?string $site_internet): static
+    {
+        $this->site_internet = $site_internet;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(?string $telephone): static
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+
 }
