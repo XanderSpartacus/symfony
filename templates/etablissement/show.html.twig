@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'établissement {{ etablissement.nom }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Détails de l'établissement</h1>
+
+        <div class="card">
+
+            <div class="card-header">
+                <h2>{{ etablissement.nom }}</h2>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Ville</dt>
+                    <dd class="col-sm-9">{{ etablissement.ville }}</dd>
+
+                    <dt class="col-sm-3">Description</dt>
+                    <dd class="col-sm-9">{{ etablissement.description }}</dd>
+
+                    {% if etablissement.siteInternet %}
+                        <dt class="col-sm-3">Site Internet</dt>
+                        <dd class="col-sm-9">{{ etablissement.siteInternet }}</dd>
+                    {% endif %}
+
+                    {% if etablissement.telephone %}
+                        <dt class="col-sm-3">Téléphone</dt>
+                        <dd class="col-sm-9">{{ etablissement.telephone }}</dd>
+                    {% endif %}
+                </dl>
+            </div>
+            <div class="card-footer">
+                <a href="{{ path('app_etablissement_index') }}">Retour à la liste</a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

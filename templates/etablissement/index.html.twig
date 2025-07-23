@@ -27,6 +27,7 @@
             <th>Nom</th>
             <th>Ville</th>
             <th>Description</th>
+            <th class="text-end">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +36,11 @@
                 <td>{{ etab.nom|upper }}</td>
                 <td>{{ etab.ville }}</td>
                 <td>{{ etab.description }}</td>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-info" href="{{ path('app_etablissement_show', {'id': etab.id}) }}" title="Voir les détails">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

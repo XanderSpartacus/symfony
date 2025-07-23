@@ -43,6 +43,14 @@ class EtablissementController extends AbstractController
         ]);
     }
 
+    #[Route('/etablissement/{id}', name: 'app_etablissement_show', requirements: ['id' => '\d+'], methods: ['GET'])]
+    public function show(Etablissement $etablissement): Response
+    {
+        return $this->render('etablissement/show.html.twig', [
+            'etablissement' => $etablissement,
+        ]);
+    }
+
     #[Route('/etablissement/new', name: 'app_etablissement_new')]
     public function new(Request $request, EntityManagerInterface $manager): Response
     {
