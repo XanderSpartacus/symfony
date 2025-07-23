@@ -1,5 +1,6 @@
 twig:
     file_name_pattern: '*.twig'
+    form_themes: ['bootstrap_5_layout.html.twig']
     globals:
         app_name: Portail CSIESR
         home_description: "Cette application sert de support à la formation Symfony"
