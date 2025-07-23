@@ -16,19 +16,19 @@ class AppFixtures extends Fixture
         // voir d'autres options : bin/console doctrine:fixtures:load --help
 
         $etablissements = [
-            ['nom' => 'Université de Marseille', 'ville' => 'Marseille', 'description' => "Description de l'Université de Marseille"],
-            ['nom' => 'Université de Lille', 'ville' => 'Lille', 'description' => "Description de l'Université de Lille"],
-            ['nom' => 'Université de Pau', 'ville' => 'Pau', 'description' => "Description de l'Université de Pau"],
-            ['nom' => 'Université de Rennes', 'ville' => 'Rennes', 'description' => "Description de l'Université de Rennes"],
-            ['nom' => 'Université de Nantes', 'ville' => 'Nantes', 'description' => "Description de l'Université de Nantes"],
-            ['nom' => 'Université de Bordeaux', 'ville' => 'Bordeaux', 'description' => "Description de l'Université de Bordeaux"],
-            ['nom' => 'Université de Lyon', 'ville' => 'Lyon', 'description' => "Description de l'Université de Lyon"],
-            ['nom' => 'Université de Nice', 'ville' => 'Nice', 'description' => "Description de l'Université de Nice"],
-            ['nom' => 'Université de Paris', 'ville' => 'Paris', 'description' => "Description de l'Université de Paris"],
-            ['nom' => 'Université de Rouen', 'ville' => 'Rouen', 'description' => "Description de l'Université de Rouen"],
-            ['nom' => 'Université de Mulhouse', 'ville' => 'Mulhouse', 'description' => "Description de l'Université de Mulhouse"],
-            ['nom' => 'Université de Nancy', 'ville' => 'Nancy', 'description' => "Description de l'Université de Nancy"],
-            ['nom' => 'Université de Grenoble', 'ville' => 'Nancy', 'description' => "Description de l'Université de Grenoble"],
+            ['nom' => 'Université de Marseille', 'ville' => 'Marseille', 'description' => "Description de l'Université de Marseille", 'site_internet' => 'https://www.univ-amu.fr', 'telephone' => '+33 4 13 94 51 00'],
+            ['nom' => 'Université de Lille', 'ville' => 'Lille', 'description' => "Description de l'Université de Lille", 'site_internet' => null, 'telephone' => null],
+            ['nom' => 'Université de Pau', 'ville' => 'Pau', 'description' => "Description de l'Université de Pau", 'site_internet' => null, 'telephone' => null],
+            ['nom' => 'Université de Rennes', 'ville' => 'Rennes', 'description' => "Description de l'Université de Rennes", 'site_internet' => 'https://www.univ-rennes.fr', 'telephone' => '+33 2 23 23 37 54'],
+            ['nom' => 'Université de Nantes', 'ville' => 'Nantes', 'description' => "Description de l'Université de Nantes", 'site_internet' => 'https://www.univ-nantes.fr', 'telephone' => '+33 2 40 99 83 83'],
+            ['nom' => 'Université de Bordeaux', 'ville' => 'Bordeaux', 'description' => "Description de l'Université de Bordeaux", 'site_internet' => null, 'telephone' => null],
+            ['nom' => 'Université de Lyon', 'ville' => 'Lyon', 'description' => "Description de l'Université de Lyon", 'site_internet' => null, 'telephone' => null],
+            ['nom' => 'Université de Nice', 'ville' => 'Nice', 'description' => "Description de l'Université de Nice", 'site_internet' => null, 'telephone' => null],
+            ['nom' => 'Université de Paris', 'ville' => 'Paris', 'description' => "Description de l'Université de Paris", 'site_internet' => null, 'telephone' => null],
+            ['nom' => 'Université de Rouen', 'ville' => 'Rouen', 'description' => "Description de l'Université de Rouen", 'site_internet' => null, 'telephone' => null],
+            ['nom' => 'Université de Mulhouse', 'ville' => 'Mulhouse', 'description' => "Description de l'Université de Mulhouse", 'site_internet' => null, 'telephone' => null],
+            ['nom' => 'Université de Nancy', 'ville' => 'Nancy', 'description' => "Description de l'Université de Nancy", 'site_internet' => null, 'telephone' => null],
+            ['nom' => 'Université de Grenoble', 'ville' => 'Nancy', 'description' => "Description de l'Université de Grenoble", 'site_internet' => null, 'telephone' => null],
         ];
 
         foreach ($etablissements as $data) {
@@ -36,6 +36,8 @@ class AppFixtures extends Fixture
             $etablissement->setNom($data['nom']);
             $etablissement->setVille($data['ville']);
             $etablissement->setDescription($data['description']);
+            $etablissement->setSiteInternet($data['site_internet']);
+            $etablissement->setTelephone($data['telephone']);
             $manager->persist($etablissement);
         }
 
