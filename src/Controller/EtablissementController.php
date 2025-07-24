@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Etablissement;
 use App\Form\EtablissementType;
 use App\Repository\EtablissementRepository;
+use App\Service\StatsService;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +20,8 @@ class EtablissementController extends AbstractController
     public function index(
         EtablissementRepository $etablissementRepository,
         PaginatorInterface $paginator,
-        Request $request
+        Request $request,
+        StatsService $statsService
     ): Response {
         $query = $etablissementRepository->createQueryBuilder('e')
             ->orderBy('e.nom', 'ASC');
@@ -38,8 +40,11 @@ class EtablissementController extends AbstractController
         // implémenter dans le controller le service de pagination 'paginate'
         // mettre à jour le template Twig etablissement/index.html.twig
 
+        $etablissementsCount = $statsService->getEtablissementsCount();
+
         return $this->render('etablissement/index.html.twig', [
             'etablissements' => $etablissements,
+            'etablissementsCount' => $etablissementsCount,
         ]);
     }
 

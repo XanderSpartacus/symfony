@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\StatsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,10 +11,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_main')]
-    public function index(): Response
+    public function index(StatsService $statsService): Response
     {
+        $etablissementsCount = $statsService->getEtablissementsCount();
+
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
+            'etablissementsCount' => $etablissementsCount,
         ]);
     }
 
