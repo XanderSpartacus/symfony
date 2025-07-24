@@ -1,0 +1,28 @@
+# translations/messages.fr.yaml
+app.welcome: Bienvenue sur le portail du CSIESR !
+app.copyright: &copy 2025 - Portail - Formation Symfony
+
+# traduction de la navigation
+nav.etablissements: Établissement
+nav.students: Étudiants
+nav.about: À propos
+nav.contact: Contact
+nav.login: Connexion
+nav.logout: Déconnexion
+nav.register: Inscription
+
+# traduction des langues
+language:
+    fr: Français
+    en: English
+    de: Deutsch
+
+# traduction user
+user:
+    welcome: Bienvenue,
+
+# traduction des forms de login + register
+security:
+    sign_in: Veuillez vous connecter
+    register: S'enregistrer
+    terms: Accepter les conditions

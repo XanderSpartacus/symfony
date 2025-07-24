@@ -3,6 +3,9 @@
 {% block title %}Ma page index!{% endblock %}
 
 {% block body %}
-{{ home_description }}
-{# Ici on peut mettre un commentaire #}
+    <h1>{{ 'app.welcome'|trans }}</h1>
+
+    <p>{{ home_description }}</p>
+
+    {# Ici on peut mettre un commentaire #}
 {% endblock %}

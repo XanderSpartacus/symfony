@@ -7,7 +7,7 @@
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <h1>S'enregistrer</h1>
+    <h1>{{ 'security.register'|trans }}</h1>
 
     {{ form_errors(registrationForm) }}
 
@@ -18,6 +18,6 @@
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn btn-primary">Inscription</button>
+        <button type="submit" class="btn btn-primary">{{ 'nav.register'|trans }}</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
