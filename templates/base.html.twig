@@ -12,7 +12,7 @@
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container">
-                <a class="navbar-brand">{{ app_name }}</a>
+                <a href="{{ path('app_main') }}" class="navbar-brand">{{ app_name }}</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -28,11 +28,32 @@
                             <a href="{{ path('app_contact') }}" class="nav-link">Contact</a>
                         </li>
                     </ul>
+                    <div class="">
+                        {% if app.user %}
+                            Bienvenue, {{ app.user.userIdentifier }}
+                            {% if 'ROLE_ADMIN' in app.user.roles %}
+                                (role : admin)
+                            {% elseif 'ROLE_USER' in app.user.roles %}
+                                (role : user)
+                            {% endif %}
+                            <a class="btn btn-outline-danger" href="{{ path('app_logout') }}">Déconnexion</a>
+                        {% else %}
+                            <a class="btn btn-outline-primary me-2" href="{{ path('app_login') }}">Connexion</a>
+                            <a class="btn btn-primary" href="{{ path('app_register') }}">Inscription</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </nav>
 
         <main class="container mt-4">
+        {% block flash_messages %}
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endblock %}
         {% block body %}{% endblock %}
         </main>
 

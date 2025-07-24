@@ -9,12 +9,6 @@
         <a class="btn btn-primary" href="{{ path('app_etablissement_new') }}">Ajouter un établissement</a>
     </div>
 
-    {% for message in app.flashes('success') %}
-    <div class="alert alert-success">
-        {{ message }}
-    </div>
-    {% endfor %}
-
     {% if etablissements is not empty %}
 
     {#  exemple d'include d'une liste
