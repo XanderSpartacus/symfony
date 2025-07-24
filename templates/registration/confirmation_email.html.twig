@@ -1,0 +1,15 @@
+<h1>Confirmez votre adresse e-mail</h1>
+
+<p>
+    Bonjour ! Veuillez confirmer votre email en cliquant sur le lien ci-dessous : <br><br>
+    <a href="{{ signedUrl|raw }}">Confirmer mon e-mail</a>.
+</p>
+
+<p>
+    Ce lien expira dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>
+
+<p>
+    Cordialement,
+    L'équipe du Portail CSIESR
+</p>
