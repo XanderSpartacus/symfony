@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Renvoyer l'email de vérification{% endblock %}
+
+{% block body %}
+
+    <h1>Renvoyer l'email de vérification</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.email) }}
+
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+    {{ form_end(form) }}
+{% endblock %}
