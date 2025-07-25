@@ -41,10 +41,12 @@
                         </div>
                         {% if app.user %}
                             {{ 'user.welcome'|trans }} {{ app.user.userIdentifier }}
-                            {% if 'ROLE_ADMIN' in app.user.roles %}
-                                (role : admin)
-                            {% elseif 'ROLE_USER' in app.user.roles %}
-                                (role : user)
+                            {% if is_granted('ROLE_ADMIN') %}
+                                (<a href="{{ path('admin_dashboard') }}">role : admin</a>)
+                            {% elseif is_granted('ROLE_PARTNER') %}
+                                (<a href="{{ path('partner_dashboard') }}">role : partner</a>)
+                            {% elseif is_granted('ROLE_USER') %}
+                                (<a href="{{ path('user_dashboard') }}">role : user</a>)
                             {% endif %}
                             <a class="btn btn-outline-danger" href="{{ path('app_logout') }}">{{ 'nav.logout'|trans }}</a>
                         {% else %}

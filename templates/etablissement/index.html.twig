@@ -6,7 +6,6 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Liste des Etablissements ({{ etablissementsCount }})</h1>
-        <a class="btn btn-primary" href="{{ path('app_etablissement_new') }}">Ajouter un établissement</a>
     </div>
 
     {% if etablissements is not empty %}
@@ -34,6 +33,17 @@
                     <a class="btn btn-sm btn-info" href="{{ path('app_etablissement_show', {'id': etab.id}) }}" title="Voir les détails">
                         <i class="bi bi-eye"></i>
                     </a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn btn-sm btn-warning" href="{{ path('admin_etablissement_edit', {'id': etab.id}) }}" title="Modifier">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <form action="{{ path('admin_etablissement_delete', {'id': etab.id}) }}" method="post" class="d-inline" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet établissement ?');">
+                        <input type="hidden" name="token" value="{{ csrf_token('delete-etablissement' ~ etab.id) }}">
+                        <button type="submit" class="btn btn-sm btn-danger" title="Supprimer">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </form>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Mon tableau de bord</h1>
+    <p>Bienvenue, {{ app.user.userIdentifier }}</p>
+    <p>Ceci est votre espace personnel</p>
+    {# contenu du dashboard utilisateur à ajouter ici #}
+</div>
+{% endblock %}

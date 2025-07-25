@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord Administrateur{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Mon tableau de bord Administrateur</h1>
+        <p>Bienvenue dans l'espace administrateur</p>
+
+        <div class="mt-4">
+            <a class="btn btn-primary" href="{{ path('admin_etablissement_new') }}">Ajouter un nouvel établissement</a>
+        </div>
+
+        <div class="mt-4">
+            <h2>Actions rapides</h2>
+            <ul>
+                <li><a href="{{ path('app_etablissement_index') }}">Gérer les établissements</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
