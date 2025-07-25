@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -35,6 +37,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private bool $isVerified = false;
+
+    #[ORM\OneToMany(targetEntity: LoginToken::class, mappedBy: 'createdBy', orphanRemoval: true)]
+    private Collection $sentLoginTokens;
+
+    public function __construct()
+    {
+        $this->sentLoginTokens = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -96,6 +106,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): static
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LoginToken>
+     */
+    public function getSentLoginTokens(): Collection
+    {
+        return $this->sentLoginTokens;
+    }
+
+    public function addSentLoginToken(LoginToken $sentLoginToken): static
+    {
+        if (!$this->sentLoginTokens->contains($sentLoginToken)) {
+            $this->sentLoginTokens->add($sentLoginToken);
+            $sentLoginToken->setCreatedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSentLoginToken(LoginToken $sentLoginToken): static
+    {
+        if ($this->sentLoginTokens->removeElement($sentLoginToken)) {
+            // set the owning side to null (unless already changed)
+            if ($sentLoginToken->getCreatedBy() === $this) {
+                $sentLoginToken->setCreatedBy(null);
+            }
+        }
 
         return $this;
     }

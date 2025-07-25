@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inviter un partenaire{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Inviter un nouveau partenaire</h1>
+        <p>Le partenaire recevra un lien de connexion unique et à durée limitée.</p>
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary mt-3">Envoyer l'invitation</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
