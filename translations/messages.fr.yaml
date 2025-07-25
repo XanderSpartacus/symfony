@@ -26,3 +26,9 @@ security:
     sign_in: Veuillez vous connecter
     register: S'enregistrer
     terms: Accepter les conditions
+
+# Traductions pour les messages flash
+etablissement.flash.create_success: "L'établissement a bien été ajouté."
+etablissement.flash.edit_success: "L'établissement a bien été modifié."
+etablissement.flash.delete_success: "L'établissement a bien été supprimé."
+csrf.token_invalid: "Le jeton de sécurité est invalide. Veuillez réessayer."

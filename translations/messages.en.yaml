@@ -26,3 +26,9 @@ security:
     sign_in: Please sign in
     register: Register
     terms: Agree terms
+
+# Traductions pour les messages flash
+etablissement.flash.create_success: "The establishment has been added successfully."
+etablissement.flash.edit_success: "The establishment has been edited successfully."
+etablissement.flash.delete_success: "The establishment has been deleted successfully."
+csrf.token_invalid: "The security token is invalid. Please try again."

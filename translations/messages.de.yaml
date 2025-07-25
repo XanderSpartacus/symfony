@@ -26,3 +26,9 @@ security:
     sign_in: Bitte anmelden
     register: Registrieren
     terms: Bedingungen zustimmen
+
+# Traductions pour les messages flash
+etablissement.flash.create_success: "Die Einrichtung wurde erfolgreich hinzugefügt."
+etablissement.flash.edit_success: "Die Einrichtung wurde erfolgreich bearbeitet."
+etablissement.flash.delete_success: "Die Einrichtung wurde erfolgreich gelöscht."
+csrf.token_invalid: "Das Sicherheitstoken ist ungültig. Bitte versuchen Sie es erneut."
