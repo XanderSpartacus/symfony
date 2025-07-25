@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous Contacter{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Nous Contacter</h1>
+        <p>Vous avez une question ou une suggestion ? Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus bref délais.</p>
+
+        {{ form_start(contactForm) }}
+            {{ form_row(contactForm.name) }}
+            {{ form_row(contactForm.mail) }}
+            {{ form_row(contactForm.message) }}
+
+            {{ form_row(contactForm.submit) }}
+        {{ form_end(contactForm) }}
+    </div>
+{% endblock %}
