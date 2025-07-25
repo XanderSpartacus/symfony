@@ -1,0 +1,2 @@
+"Your password should be at least {{ limit }} characters": "Your password should be at least {{ limit }} characters"
+"The password fields must match.": "The password fields must match."
