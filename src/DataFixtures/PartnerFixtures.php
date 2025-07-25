@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\DataFixtures;
 
 use App\Entity\User;
@@ -8,7 +9,7 @@ use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class AdminUserFixtures extends Fixture implements FixtureGroupInterface
+class PartnerFixtures extends Fixture implements FixtureGroupInterface
 {
     private $passwordHasher;
 
@@ -19,18 +20,18 @@ class AdminUserFixtures extends Fixture implements FixtureGroupInterface
 
     public function load(ObjectManager $manager): void
     {
-        $admin = new User();
-        $admin->setEmail('admin@test.dev');
-        $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setPassword($this->passwordHasher->hashPassword($admin, 'admin'));
-        $admin->setIsVerified(true);
+        $partner = new User();
+        $partner->setEmail('partner@test.dev');
+        $partner->setRoles(['ROLE_PARTNER']);
+        $partner->setPassword($this->passwordHasher->hashPassword($partner, 'partner'));
+        $partner->setIsVerified(true);
 
-        $manager->persist($admin);
+        $manager->persist($partner);
         $manager->flush();
     }
 
     public static function getGroups(): array
     {
-        return ['group1'];
+        return ['group3'];
     }
 }
