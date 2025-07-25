@@ -35,10 +35,34 @@ class EtablissementController extends AbstractController
 
         $etablissementsCount = $statsService->getEtablissementsCount();
 
-        return $this->render('etablissement/index.html.twig', [
+        $response = $this->render('etablissement/index.html.twig', [
             'etablissements' => $etablissements,
             'etablissementsCount' => $etablissementsCount,
         ]);
+
+        # https://symfony.com/doc/current/components/http_foundation.html#managing-the-http-cache
+        /*$response->setCache([
+            'must_revalidate'  => false,
+            'no_cache'         => false,
+            'no_store'         => false,
+            'no_transform'     => false,
+            'public'           => true,
+            'private'          => false,
+            'proxy_revalidate' => false,
+            'max_age'          => 600,
+            's_maxage'         => 600,
+            'stale_if_error'   => 86400,
+            'stale_while_revalidate' => 60,
+            'immutable'        => true,
+            'last_modified'    => new \DateTime(),
+            'etag'             => 'abcdef',
+        ]);*/
+
+        $response->headers->set('X-Debug-Token', 'null'); // désactive le profiler pour cette réponse
+        $response->setPublic();
+        $response->setMaxAge(3600);
+
+        return $response;
     }
 
     #[Route('/etablissement/{id}', name: 'app_etablissement_show', requirements: ['id' => '\d+'], methods: ['GET'])]
