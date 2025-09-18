@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+// ici toutes les méthodes sont strictement réservées aux admins donc je peux laisser
 #[IsGranted("ROLE_ADMIN")]
 #[Route('/admin/etablissement')]
 class EtablissementController extends AbstractController
@@ -44,6 +45,12 @@ class EtablissementController extends AbstractController
     #[Route('/{id}/edit', name: 'admin_etablissement_edit')]
     public function edit(Request $request, Etablissement $etablissement, EntityManagerInterface $manager): Response
     {
+        // bin/console debug:container security.authorization_checker
+        // bin/console debug:container --tag=security.voter
+        // Cette ligne fait appel au EtablissementVoter pour vérifier si l'utilisateur
+        // a la permission 'EDIT' sur l'objet $etablissement. En cas de refus, une erreur 403 est retournée.
+        $this->denyAccessUnlessGranted('ETABLISSEMENT_EDIT', $etablissement);
+
         $form = $this->createForm(EtablissementType::class, $etablissement);
 
         $form->handleRequest($request);
@@ -64,6 +71,9 @@ class EtablissementController extends AbstractController
     #[Route('/{id}/delete', name: 'admin_etablissement_delete', methods: ['POST'])]
     public function delete(Request $request, Etablissement $etablissement, EntityManagerInterface $manager): Response
     {
+        //
+        $this->denyAccessUnlessGranted('ETABLISSEMENT_DELETE', $etablissement);
+
         # https://symfony.com/doc/current/security/csrf.html
         $token = $request->request->get('token');
         if ($this->isCsrfTokenValid('delete-etablissement'.$etablissement->getId(), $token)) {

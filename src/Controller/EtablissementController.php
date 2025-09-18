@@ -4,10 +4,8 @@ namespace App\Controller;
 
 
 use App\Entity\Etablissement;
-use App\Form\EtablissementType;
 use App\Repository\EtablissementRepository;
 use App\Service\StatsService;
-use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
