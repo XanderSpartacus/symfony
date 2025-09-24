@@ -9,7 +9,12 @@
     Ce lien expira dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
 </p>
 
+{% if temporaryPassword is defined %}
+<p>Voici votre mot de passe temporaire : <strong>{{ temporaryPassword }}</strong></p>
+<p>Merci de vous connecter et de le changer immédiatement.</p>
+{% endif %}
+
 <p>
-    Cordialement,
+    Cordialement,<br><br>
     L'équipe du Portail CSIESR
 </p>

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user is defined ? 'Modifier un utilisateur' : 'Ajouter un utilisateur' }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Modifier un utilisateur</h1>
+        <p>Il faudra communiquer le mot de passe à l'utilisateur si modifié. Il devra également changer son mot de passe</p>
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary mt-3">Modifier</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

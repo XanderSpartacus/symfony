@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user is defined ? 'Modifier un utilisateur' : 'Ajouter un utilisateur' }}{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Nombre d'utilisateurs : {{ users|length }}</h1>
+    <p>Liste de tous les utilisateurs inscrits</p>
+
+    <div class="mt-4">
+        <a class="btn btn-primary" href="{{ path('admin_user_new') }}">Ajouter un nouvel utilisateur</a>
+    </div>
+
+    <div class="mt-4">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th class="text-end">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td class="text-end">
+                        <a class="btn btn-sm btn-warning" href="{{ path('admin_user_edit', {'id': user.id}) }}" title="Modifier"><i class="bi bi-pencil"></i></a>
+                        <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');" class="btn btn-sm btn-danger" href="{{ path('admin_user_delete', {'id': user.id}) }}" title="Modifier"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>Aucun utilisateur trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

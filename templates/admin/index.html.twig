@@ -9,13 +9,15 @@
 
         <div class="mt-4">
             <a class="btn btn-primary" href="{{ path('admin_etablissement_new') }}">Ajouter un nouvel établissement</a>
-            <a href="{{ path('admin_invitation_form') }}" class="btn btn-secondary">Inviter un partenaire</a>
+            <a class="btn btn-secondary" href="{{ path('admin_user_new') }}">Ajouter un utilisateur</a>
+            <a class="btn btn-secondary" href="{{ path('admin_invitation_form') }}">Inviter un partenaire</a>
         </div>
 
         <div class="mt-4">
             <h2>Actions rapides</h2>
             <ul>
                 <li><a href="{{ path('app_etablissement_index') }}">Gérer les établissements</a></li>
+                <li><a href="{{ path('admin_users_list') }}">Gérer les utilisateurs</a></li>
             </ul>
         </div>
     </div>
